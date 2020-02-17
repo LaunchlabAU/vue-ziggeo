@@ -164,6 +164,7 @@ export const ziggeoRecorderAttributesPropTypes = {
     'delete-old-streams': Boolean,
     'lazy-application': Boolean,
     'allowcancel': Boolean,
+    'playlist': Array,
 
     // Form and HTML parameters
     'input-bind': String,
