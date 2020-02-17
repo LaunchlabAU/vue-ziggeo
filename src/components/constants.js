@@ -56,7 +56,8 @@ export const ziggeoRecorderAttributesPropTypes = {
     },
     'flip-camera': Boolean,
     'early-rerecord': Boolean,
-    'sharevideo': Array,
+    'share
+  ': Array,
 
     // Security parameters
     'server-auth': String,
@@ -219,10 +220,7 @@ export const ziggeoPlayerAttributesPropTypes = {
     'client-auth': String,
 
     // Video management parameters
-    'video': {
-        type: String,
-        required: true
-    },
+    'video': String,
     'stream':	String,
     'effect-profile': Array,
     'video-profile': String,
