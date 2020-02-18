@@ -27,6 +27,7 @@ export const ziggeoRecorderAttributesPropTypes = {
         type: Boolean,
         default: true
     },
+    'camerafacefront': Boolean,
     'countdown': {
         type: [Number, Function],
         default: 3
@@ -56,8 +57,7 @@ export const ziggeoRecorderAttributesPropTypes = {
     },
     'flip-camera': Boolean,
     'early-rerecord': Boolean,
-    'share
-  ': Array,
+    'sharevideo': Array,
 
     // Security parameters
     'server-auth': String,
@@ -112,10 +112,46 @@ export const ziggeoRecorderAttributesPropTypes = {
     // Operational parameters
     'manual_upload': Boolean,
     'rerecordable':	Boolean,
-    'addstreampositionx': Number,
-    'addstreampositiony': Number,
-    'addstreampositionwidth': Number,
-    'addstreampositionheight': Number,
+    'multistreamreversable': {
+        type: Boolean,
+        default: true
+    },
+    'multistreamdraggable': {
+        type: Boolean,
+        default: true
+    },
+    'multistreamresizeable': {
+        type: Boolean,
+        default: false
+    },
+    'addstreamproportional': {
+        type: Boolean,
+        default: true
+    },
+    'addstreampositionx': {
+        type: Number,
+        default: 5
+    },
+    'addstreampositiony': {
+        type: Number,
+        default: 5
+    },
+    'addstreampositionwidth': {
+        type: Number,
+        default: 120
+    },
+    'addstreampositionheight': {
+        type: Number,
+        default: 95
+    },
+    'addstreamminwidth': {
+        type: Number,
+        default: 120
+    },
+    'addstreamminheight': {
+        type: Number,
+        default: 95
+    },
     'allowupload': {
         type: Boolean,
         default: true
@@ -136,6 +172,10 @@ export const ziggeoRecorderAttributesPropTypes = {
         type: Boolean,
         default: true
     },
+    'display-timer': {
+        type: Boolean,
+        default: true
+    },
     'autoplay': Boolean,
     'recordings':	Number,
     'allowedextensions': Array,
@@ -144,6 +184,10 @@ export const ziggeoRecorderAttributesPropTypes = {
     'flashincognitosupport': Boolean,
     'simulate': Boolean,
     'allowcustomupload': Boolean,
+    'manual-upload': Boolean,
+    'createthumbnails': Boolean,
+    'showsettingsmenu': Boolean, // As a property show/hide from users
+    'hidevolumebar': Boolean,
     'recordermode': {
         type: Boolean,
         default: true
@@ -165,7 +209,19 @@ export const ziggeoRecorderAttributesPropTypes = {
     'delete-old-streams': Boolean,
     'lazy-application': Boolean,
     'allowcancel': Boolean,
-    'playlist': Array,
+    'orientation': Boolean,
+    'popup': Boolean,
+    'popup-stretch': Boolean,
+    'framerate-warning': String,
+    'snapshottype': String,
+    "rtmpstreamtype": {
+        type: String,
+        default: 'mp4'
+    },
+    "rtmpmicrophonecodec": {
+        type: String,
+        default: 'speex'
+    },
 
     // Form and HTML parameters
     'input-bind': String,
@@ -196,10 +252,33 @@ export const ziggeoPlayerAttributesPropTypes = {
         type: [Number, String],
         default: 480
     },
+    'allowpip': Boolean,
     'responsive': Boolean,
     'skipinitial': Boolean,
     'picksnapshots': Boolean,
+    'playlist': [Array, String],
+    'hidebarafter': {
+        type: Number,
+        default: 5000 // in milliseconds
+    },
+    'skipseconds': {
+        type: Number,
+        default: 5  // in seconds
+    },
+    'tracktagsstyled': {
+        type: Boolean,
+        default: true
+    },
+    'hideoninactivity': {
+        type: Boolean,
+        default: true
+    },
     'countdown': [ Number, Function ],
+    'stretch': Boolean,
+    'popup-stretch': Boolean,
+    'preventinteraction': Boolean,
+    'stretchwidth': Boolean,
+    'stretchheight': Boolean,
     'stream-width': Number,
     'stream-height': Number,
     'nofullscreen': Boolean,
@@ -220,11 +299,15 @@ export const ziggeoPlayerAttributesPropTypes = {
     'client-auth': String,
 
     // Video management parameters
-    'video': String,
+    'video': {
+        type: String,
+        required: true
+    },
     'stream':	String,
     'effect-profile': Array,
     'video-profile': String,
     'noaudio': Boolean,
+    'poster': String,
     'source':	String,
     'framerate': Number,
     'videobitrate': [Number, String],
@@ -363,8 +446,8 @@ export const ziggeoApiEventsPropTypes = {
 // #######################  Screen Recorder Options  ##############################
 export const recorderApplicationDefaultOptions = {
     'webrtc_streaming': false,
-    'webrtc_streaming_if_necessary': false,
-    'webrtc_on_mobile': false,
+    'webrtc_streaming_if_necessary': true,
+    'webrtc_on_mobile': true,
     'auth': false,
     'debug': false,
     'testing_application': false,
